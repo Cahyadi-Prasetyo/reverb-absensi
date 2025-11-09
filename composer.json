@@ -1,11 +1,16 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/vue-starter-kit",
+    "name": "laravel/livewire-attendance-system",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Real-time attendance system with Laravel 12, Livewire 3, and Reverb WebSocket.",
+    "version": "2.0.0",
     "keywords": [
         "laravel",
-        "framework"
+        "livewire",
+        "attendance",
+        "real-time",
+        "reverb",
+        "websocket"
     ],
     "license": "MIT",
     "require": {

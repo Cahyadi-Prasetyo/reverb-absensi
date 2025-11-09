@@ -4,14 +4,25 @@
 
 [![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel)](https://laravel.com)
 [![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?logo=vue.js)](https://vuejs.org)
+[![Inertia.js](https://img.shields.io/badge/Inertia.js-2-9553E9)](https://inertiajs.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://www.docker.com)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)](#)
+[![Status](https://img.shields.io/badge/Status-Optimized-success)](#)
 
 ---
 
 ## 🚀 Quick Start
 
 ⚠️ **PENTING:** Jangan commit file `.env` atau `.env.docker`! Lihat [Security Guidelines](docs/SECURITY.md)
+
+### 💡 Ready for Development!
+
+**Modern Stack with Inertia.js + Vue 3:**
+- Real-time updates via Reverb WebSocket
+- Type-safe with TypeScript
+- Beautiful UI with Tailwind CSS 4
+- Component library with Reka UI
+
+**Want to develop new features?** See [docs/INERTIA-DEVELOPMENT.md](docs/INERTIA-DEVELOPMENT.md)
 
 ```bash
 # 1. Clone repository
@@ -101,10 +112,10 @@ docker exec laravel_absensi_app_1 php artisan migrate --seed
 - **Redis 7** - Cache & Broadcasting
 
 ### Frontend
-- **Vue 3** - JavaScript Framework
+- **Inertia.js 2.0** - Modern Monolith
+- **Vue 3** - Progressive JavaScript Framework
 - **TypeScript** - Type Safety
-- **Inertia.js** - Modern Monolith
-- **Tailwind CSS** - Utility-First CSS
+- **Tailwind CSS 4** - Utility-First CSS
 - **Reka UI** - Component Library
 
 ### Infrastructure
@@ -116,18 +127,32 @@ docker exec laravel_absensi_app_1 php artisan migrate --seed
 
 ## 📚 Documentation
 
+### 🚀 Quick Links
+
+| Document | Description |
+|----------|-------------|
+| [docs/QUICK-START.md](docs/QUICK-START.md) | ⚡ 5-minute setup guide |
+| [docs/ADMIN-PANEL.md](docs/ADMIN-PANEL.md) | 🎛️ Admin panel complete guide |
+| [docs/FLOWCHART.md](docs/FLOWCHART.md) | 🔄 System flow diagrams |
+| [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | 🔧 Common issues & fixes |
+
 ### 📖 Complete Documentation
 
 | Document | Description |
 |----------|-------------|
-| [Getting Started](docs/GETTING-STARTED.md) | Quick start guide (5 minutes) |
-| [Architecture](docs/ARCHITECTURE.md) | System architecture & design decisions |
-| [Development](docs/DEVELOPMENT.md) | Development workflow & commands |
-| [Deployment](docs/DEPLOYMENT.md) | Production deployment guide |
-| [Security](docs/SECURITY.md) | ⚠️ Security guidelines (IMPORTANT!) |
-| [Changelog](docs/CHANGELOG.md) | Version history & roadmap |
+| [Getting Started](docs/GETTING-STARTED.md) | Detailed setup guide |
+| [Architecture](docs/ARCHITECTURE.md) | System architecture & design |
+| [Flowchart](docs/FLOWCHART.md) | Complete system flows |
+| [Development](docs/DEVELOPMENT.md) | Development workflow |
+| [Inertia Guide](docs/INERTIA-DEVELOPMENT.md) | Inertia.js patterns |
+| [Admin Panel](docs/ADMIN-PANEL.md) | Admin features & testing |
+| [Deployment](docs/DEPLOYMENT.md) | Production deployment |
+| [Security](docs/SECURITY.md) | ⚠️ Security guidelines |
+| [Changelog](docs/CHANGELOG.md) | Version history |
 
-**Start here:** [docs/README.md](docs/README.md)
+**Start here:** [docs/README.md](docs/README.md) - Complete documentation index
+
+> 📁 **Note:** All documentation is organized in `docs/` folder. Old/deprecated docs moved to `docs/archive/`
 
 ---
 
@@ -190,25 +215,63 @@ docker exec laravel_absensi_app_1 php artisan [command]
 **Status:** ✅ Production Ready  
 **Last Updated:** 9 November 2025
 
+### 🚀 Ready for Development
+
+**Current Stack:**
+- ✅ Laravel 12 + Inertia.js + Vue 3
+- ✅ Real-time WebSocket (Reverb)
+- ✅ Docker infrastructure ready
+- ✅ Authentication + 2FA
+- ✅ Basic attendance features
+
+**Next Steps:**
+- 📋 Admin Panel - User & attendance management
+- 🏖️ Leave Management - Cuti/izin system
+- 📊 Analytics - Advanced reporting
+- 📍 Geolocation - GPS validation
+
+**See:** [docs/INERTIA-DEVELOPMENT.md](docs/INERTIA-DEVELOPMENT.md) - Panduan lengkap pengembangan fitur baru
+
 ### ✅ Implemented (v1.0.0)
 
+**Infrastructure:**
 - ✅ Docker Infrastructure (7 services)
 - ✅ Real-time Broadcasting (Laravel Reverb)
+- ✅ Load Balancing (3 instances)
+- ✅ Redis Cache & Broadcasting
+- ✅ MySQL Database
+
+**Features:**
 - ✅ Check-In/Out Functionality
 - ✅ Live Dashboard
 - ✅ Attendance History
-- ✅ Load Balancing (3 instances)
 - ✅ Node Tracking
 - ✅ Authentication (Fortify + 2FA)
 
-### 🔮 Future Enhancements
+**Frontend:**
+- ✅ Inertia.js + Vue 3
+- ✅ TypeScript Support
+- ✅ Tailwind CSS 4
+- ✅ Reka UI Components
 
-- [ ] Geolocation Validation
-- [ ] Photo Capture
-- [ ] Leave Management UI
-- [ ] Analytics & Reports
+### 🔮 Roadmap
+
+**High Priority:**
+- [ ] Admin Panel (User & attendance management)
+- [ ] Leave Management (Cuti/izin system)
+- [ ] Analytics & Reports (Advanced reporting)
+
+**Medium Priority:**
+- [ ] Geolocation Validation (GPS check-in)
+- [ ] Photo Capture (Selfie attendance)
 - [ ] Push Notifications
-- [ ] Admin Panel
+- [ ] Email Notifications
+
+**Future:**
+- [ ] Mobile App (React Native)
+- [ ] Multi-tenant Support
+- [ ] Advanced Analytics
+- [ ] Integration APIs
 
 **Full roadmap:** [docs/CHANGELOG.md](docs/CHANGELOG.md)
 
