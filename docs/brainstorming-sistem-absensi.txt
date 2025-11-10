@@ -1,0 +1,192 @@
+================================================================================
+BRAINSTORMING: SISTEM ABSENSI REAL-TIME TERDISTRIBUSI
+================================================================================
+Tanggal: 10 November 2025
+
+================================================================================
+KONSEP AWAL
+================================================================================
+
+Proyek: Sistem absensi real-time terdistribusi dengan fokus utama pada:
+- Penerapan konsep sistem terdistribusi
+- Sinkronisasi data antar node
+- Komunikasi realtime antar pengguna dan server
+
+================================================================================
+TECH STACK PILIHAN
+================================================================================
+
+Backend Framework: Laravel 12
+- Dukungan kuat untuk event broadcasting
+- Queue system yang robust
+- Caching mechanism terintegrasi dengan Redis
+
+Message Broker & Pub/Sub: Redis
+- Message broker untuk komunikasi antar container
+- Pub/Sub system untuk real-time data
+- Simulasi sistem terdistribusi dalam Docker
+
+Database: MySQL 8.0 (Production) / SQLite (Development)
+- MySQL untuk Docker production: reliable, familiar, easy setup
+- SQLite untuk local dev: zero configuration, fast iteration
+- Migrations compatible dengan kedua database
+
+Frontend: Blade + Alpine.js
+Alasan pemilihan:
+- Skala proyek kecil-menengah
+- Fokus pada stabilitas komunikasi data, bukan kompleksitas UI
+- Lebih ringan dan cepat dikembangkan
+- Terintegrasi langsung dengan Laravel tanpa build kompleks
+- Alpine.js tetap support elemen interaktif dan dinamis
+
+WebSocket Server: Laravel Reverb
+- Komunikasi real-time antar pengguna
+- Update langsung di dashboard saat ada absensi baru
+
+================================================================================
+ARSITEKTUR SISTEM
+================================================================================
+
+Docker Container Setup:
+- app-node-1 (Laravel)
+- app-node-2 (Laravel) 
+- app-node-3 (Laravel)
+- reverb-server (WebSocket)
+- redis (Pub/Sub + Cache)
+- mysql (Database)
+- nginx (Load Balancer)
+
+Flow Data Real-time:
+1. User absen di node-1 → simpan ke DB
+2. Node-1 dispatch event ke Redis pub/sub
+3. Semua node subscribe dan broadcast via Reverb
+4. Frontend (Alpine.js) listen WebSocket dan update UI
+
+================================================================================
+KEPUTUSAN ARSITEKTUR
+================================================================================
+
+1. CONSISTENCY MODEL
+   Pilihan: Eventual Consistency (max delay 1-2 detik)
+   
+   Alasan:
+   - Lebih realistis untuk sistem real-world
+   - Performance lebih baik
+   - Cocok untuk use case absensi (tidak perlu strong consistency seperti banking)
+
+2. CONFLICT RESOLUTION STRATEGY
+   Pilihan: First-Write-Wins + Timestamp Validation
+   
+   Implementasi:
+   - Absensi pertama yang diterima sistem (berdasarkan timestamp) yang valid
+   - Duplikasi dalam 5 menit akan di-reject otomatis
+   - Log semua attempt untuk audit trail
+   - Simple tapi efektif untuk prevent abuse
+
+3. PARTITIONING STRATEGY
+   Pilihan: Random/Round-robin (Stateless)
+   
+   Karakteristik:
+   - Semua node equal, tidak ada special assignment
+   - Load balancer (Nginx) yang distribute traffic
+   - Paling mudah untuk scale dan maintenance
+   - Kalau satu node down, traffic otomatis ke node lain
+
+4. FAILURE HANDLING
+   Pilihan: High Availability dengan Graceful Degradation
+   
+   Mekanisme:
+   - Absensi tetap jalan selama minimal 1 node hidup
+   - Queue di-persist ke Redis (survive restart)
+   - WebSocket auto-reconnect dengan exponential backoff
+   - Health check setiap 10 detik
+
+5. MVP FEATURE SET
+   
+   Core Features:
+   ✅ Absen masuk/keluar dengan geolocation & timestamp
+   ✅ Real-time dashboard (list absensi hari ini)
+   ✅ 3 Docker nodes + load balancer
+   ✅ Sync indicator (show node mana yang handle + latency)
+   ✅ Basic conflict detection & prevention
+   ✅ Simple admin panel (lihat semua absensi)
+
+================================================================================
+TECH STACK FINAL
+================================================================================
+
+- Laravel 12 (Backend API + Blade views)
+- Alpine.js (Frontend interactivity)
+- Laravel Reverb (WebSocket server)
+- Redis (Cache + Pub/Sub + Queue)
+- MySQL 8.0 (Database - Docker production)
+- SQLite (Database - Local development)
+- Docker Compose (Orchestration)
+- Nginx (Load Balancer)
+
+================================================================================
+DATABASE SCHEMA
+================================================================================
+
+Table: attendances
+- id
+- user_id
+- type (in/out)
+- timestamp
+- latitude
+- longitude
+- node_id
+- created_at
+- updated_at
+
+Table: attendance_logs (event sourcing)
+- id
+- attendance_id
+- event_type
+- node_id
+- payload (JSON)
+- created_at
+
+Table: users
+- id
+- name
+- email
+- role (student/teacher/admin)
+
+================================================================================
+KONSEP DISTRIBUTED SYSTEMS YANG DIIMPLEMENTASIKAN
+================================================================================
+
+1. Load Balancing & High Availability
+   - Nginx round-robin ke multiple Laravel nodes
+   - Health check untuk auto-failover
+
+2. Data Consistency
+   - Optimistic locking untuk prevent double absensi
+   - Event sourcing untuk audit trail lengkap
+   - Redis distributed lock untuk critical sections
+
+3. Real-time Synchronization
+   - Laravel Broadcasting dengan Redis driver
+   - Reverb untuk WebSocket connections
+   - Presence channels untuk track "who's online"
+
+4. Queue & Async Processing
+   - Redis queue untuk background jobs
+   - Horizon untuk monitoring
+   - Failed job handling dan retry mechanism
+
+================================================================================
+DEMONSTRASI KEMAMPUAN SISTEM
+================================================================================
+
+Dengan setup ini, sistem dapat mendemonstrasikan:
+- Load balancing & distribution
+- Real-time communication
+- Data synchronization
+- Conflict handling
+- System resilience
+
+================================================================================
+END OF DOCUMENT
+================================================================================
