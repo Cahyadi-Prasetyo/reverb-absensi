@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Laravel Reverb Absensi
 
 Aplikasi absensi real-time menggunakan Laravel 12, Inertia.js, Vue 3, dan Laravel Reverb (WebSocket).
@@ -14,16 +13,14 @@ Aplikasi absensi real-time menggunakan Laravel 12, Inertia.js, Vue 3, dan Larave
 
 - **Backend**: Laravel 12
 - **Frontend**: Vue 3 + TypeScript
-- **UI Framework**: Inertia.js
+- **UI Framework**: Alpine.js
 - **Authentication**: Laravel Fortify
 - **Real-time**: Laravel Reverb (WebSocket)
 - **Routing**: Laravel Wayfinder
 - **Styling**: Tailwind CSS
 
 ## Installation
-
-1. Clone repository ini:
-=======
+**Clone repository ini:**
 # Sistem Absensi Real-Time Terdistribusi
 
 <div align="center">
@@ -36,8 +33,6 @@ Aplikasi absensi real-time menggunakan Laravel 12, Inertia.js, Vue 3, dan Larave
 ![Nginx](https://img.shields.io/badge/Nginx-Latest-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
 **Sistem absensi karyawan modern dengan arsitektur terdistribusi, real-time synchronization, dan high availability**
-
-[Fitur](#-fitur-utama) • [Demo](#-mulai-cepat-docker) • [Dokumentasi](#-instalasi) • [Arsitektur](#-arsitektur-sistem-terdistribusi)
 
 </div>
 
@@ -157,18 +152,16 @@ docker-compose exec app-node-1 php artisan db:seed --class=ResetDatabaseSeeder -
 Ini adalah **pendekatan yang direkomendasikan** untuk merasakan arsitektur distributed system lengkap dengan multiple nodes, load balancing, dan Redis pub/sub.
 
 #### 1. Clone Repository
->>>>>>> dev
 ```bash
 git clone <repository-url>
 cd laravel-reverb-absensi
 ```
-
-<<<<<<< HEAD
 2. Install dependencies:
 =======
 #### 2. Build dan Jalankan Semua Services
 
 **Cara Otomatis (Recommended):**
+
 ```bash
 # Windows
 docker\deploy.bat
@@ -218,13 +211,11 @@ cd laravel-reverb-absensi
 ```
 
 #### 2. Install Dependencies
->>>>>>> dev
 ```bash
 composer install
 npm install
-```
 
-<<<<<<< HEAD
+```
 3. Setup environment:
 ```bash
 copy .env.example .env
@@ -351,7 +342,6 @@ docker-compose exec app-node-1 sh
 ### Mode Development Lokal (Single Node)
 
 Anda perlu menjalankan 4 services:
->>>>>>> dev
 
 **Terminal 1 - Laravel Server:**
 ```bash
@@ -367,12 +357,10 @@ npm run dev
 **Terminal 3 - Laravel Reverb (WebSocket):**
 =======
 **Terminal 2 - Laravel Reverb (WebSocket):**
->>>>>>> dev
 ```bash
 php artisan reverb:start
 ```
 
-<<<<<<< HEAD
 Atau gunakan script composer untuk menjalankan semuanya sekaligus:
 ```bash
 composer dev
