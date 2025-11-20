@@ -13,9 +13,10 @@ auth.json
 
 # Environment
 .env
-.env.backup
+.env.*
+!.env.example
 .env.production
-.env.local
+.env.docker-compose
 
 # IDE
 /.idea
@@ -51,6 +52,9 @@ database/database.sqlite
 # Docker
 docker-compose.override.yml
 docker/.env.docker
+.env.docker-compose
+docker-compose.yml.backup
+docker-compose.yml.old
 # Keep docker/ folder files in git
 !docker/
 !docker/.env.docker.example

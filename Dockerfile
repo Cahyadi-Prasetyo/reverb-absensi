@@ -50,9 +50,6 @@ RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps
 # Copy application files
 COPY . .
 
-# Copy .env.production for Vite build
-COPY .env.production .env
-
 # Complete composer installation
 RUN composer dump-autoload --optimize
 
