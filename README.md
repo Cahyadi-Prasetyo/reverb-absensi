@@ -223,45 +223,41 @@ For detailed deployment guide, see [docs/DOCKER-SWARM-DEPLOYMENT.md](./docs/DOCK
 
 ---
 
-## 🧪 Testing Distributed System (Verification Prompts)
+## 🧪 Testing Distributed System
 
-Gunakan command berikut untuk memverifikasi bahwa sistem berjalan secara terdistribusi (baik di Docker Compose maupun Swarm).
+Untuk panduan lengkap testing dan verifikasi sistem terdistribusi, silakan lihat:
+👉 **[docs/TESTING-DISTRIBUTED.md](./docs/TESTING-DISTRIBUTED.md)**
 
-### 1. Cek Distribusi Node (Database)
-Lihat bagaimana data absensi tersebar di berbagai node yang menangani request.
-
-```bash
-# Masuk ke container MySQL dan jalankan query
 ---
 
-## � Future Implementation Roadmap
+## 🚀 Future Implementation Roadmap
 
 Berikut adalah rencana pengembangan sistem untuk fase selanjutnya:
 
 ### Phase 1: Quick Wins (Security & Monitoring)
--  **Docker Secrets**: Mengganti `.env` file dengan Docker Secrets untuk keamanan credential yang lebih baik.
-- **Prometheus + Grafana**: Implementasi monitoring dashboard untuk metrics CPU, RAM, dan Request per second.
-- **Health Checks**: Menambahkan endpoint `/health` yang lebih komprehensif (DB, Redis, Disk space).
+- **Docker Secrets**: Mengganti `.env` file dengan Docker Secrets untuk keamanan credential yang lebih baik
+- **Prometheus + Grafana**: Implementasi monitoring dashboard untuk metrics CPU, RAM, dan Request per second
+- **Health Checks**: Menambahkan endpoint `/health` yang lebih komprehensif (DB, Redis, Disk space)
 
 ### Phase 2: Feature Enhancements
-- **Face Recognition**: Integrasi `face-api.js` untuk validasi wajah saat clock-in.
-- **Geofencing**: Membatasi absensi hanya dalam radius kantor menggunakan Google Maps API.
-- **Shift Management**: Fitur pengaturan shift kerja (Pagi, Siang, Malam).
-- **PWA Support**: Menjadikan web app bisa diinstall di HP (Progressive Web App).
+- **Face Recognition**: Integrasi `face-api.js` untuk validasi wajah saat clock-in
+- **Geofencing**: Membatasi absensi hanya dalam radius kantor menggunakan Google Maps API
+- **Shift Management**: Fitur pengaturan shift kerja (Pagi, Siang, Malam)
+- **PWA Support**: Menjadikan web app bisa diinstall di HP (Progressive Web App)
 
 ### Phase 3: Infrastructure Upgrades
-- **Traefik Load Balancer**: Mengganti Nginx dengan Traefik untuk fitur auto-discovery dan dashboard monitoring.
-- **CI/CD Pipeline**: Otomatisasi testing dan deployment menggunakan GitHub Actions.
-- **Kubernetes**: Migrasi dari Docker Swarm ke K8s jika skala user mencapai ribuan.
+- **Traefik Load Balancer**: Mengganti Nginx dengan Traefik untuk fitur auto-discovery dan dashboard monitoring
+- **CI/CD Pipeline**: Otomatisasi testing dan deployment menggunakan GitHub Actions
+- **Kubernetes**: Migrasi dari Docker Swarm ke K8s jika skala user mencapai ribuan
 
 ### Phase 4: User Experience
-- **Dark Mode**: Dukungan tema gelap native.
-- **Push Notifications**: Notifikasi pengingat absen via browser push API.
-- **Multi-language**: Dukungan Bahasa Inggris dan Indonesia.
+- **Dark Mode**: Dukungan tema gelap native
+- **Push Notifications**: Notifikasi pengingat absen via browser push API
+- **Multi-language**: Dukungan Bahasa Inggris dan Indonesia
 
 ---
 
-## �📚 Documentation
+## 📚 Documentation
 
 Comprehensive documentation available in [docs/](./docs) folder:
 
@@ -279,8 +275,6 @@ Comprehensive documentation available in [docs/](./docs) folder:
 
 Untuk panduan lengkap monitoring logs, cek status container, dan troubleshooting masalah umum, silakan lihat:
 👉 **[docs/CHEAT-SHEET.md](./docs/CHEAT-SHEET.md)**
-
----
 
 ---
 
@@ -370,7 +364,7 @@ For issues or questions:
 - Comprehensive documentation
 
 **Version**: 1.0.0  
-**Last Updated**: 2025-11-20  
+**Last Updated**: November 2024  
 **Status**: 🟢 Fully Operational
 
 ---
